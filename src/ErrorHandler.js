@@ -1,7 +1,5 @@
 const emailRegex =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const passwordRegex =
-  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 // Registration form validator
 export const registrationValidator = (
@@ -49,16 +47,7 @@ export const registrationValidator = (
         password: "Password must be at least 8 character long",
       };
     });
-  }
-  // else if (!password.match(passwordRegex)) {
-  //   setErrors((prevErrors) => {
-  //     return {
-  //       ...prevErrors,
-  //       password: "Password must have atleast one spacial character",
-  //     };
-  //   });
-  // }
-  else {
+  } else {
     setErrors((prevErrors) => {
       return { ...prevErrors, password: "" };
     });

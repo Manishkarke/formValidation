@@ -1,8 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { userRegister } from "../../../Redux/Feature/user/Auth/authAction";
-import { RegisterPageLayout } from "../../../Layouts/RegisterPageLayout";
-import { registrationValidator } from "../../../utils/ErrorHandler";
+import { registrationValidator } from "./ErrorHandler";
 
 // Tailwind Class Name
 const tailwindClass = {
@@ -20,10 +17,6 @@ const tailwindClass = {
 };
 
 function Register() {
-  // hooks functions
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
   // Component form state states
   const [formData, setFormData] = React.useState({
     name: "",
@@ -70,25 +63,15 @@ function Register() {
     setFormSubmitted(true);
 
     if (isFormValid && isFormSubmitted) {
-      const { name, email, password } = formData;
-      dispatch(
-        userRegister({
-          name,
-          email,
-          password,
-          navigate,
-          toast,
-          setFormSubmitted,
-        })
-      );
+      alert("Form submitted");
     } else if (isFormSubmitted) {
       setFormSubmitted(false);
     }
   };
 
   return (
-    <RegisterPageLayout>
-      <div className={tailwindClass.box}>
+    <>
+      <div className="main-box">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className={tailwindClass.title}>Register new account</h2>
         </div>
@@ -192,16 +175,9 @@ function Register() {
               </button>
             </div>
           </form>
-
-          <p className="mt-10 text-center text-sm text-gray-500">
-            already have an account?
-            <Link to={"/login"} className={tailwindClass.links}>
-              sign in
-            </Link>
-          </p>
         </div>
       </div>
-    </RegisterPageLayout>
+    </>
   );
 }
 
